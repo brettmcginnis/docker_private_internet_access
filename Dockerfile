@@ -19,6 +19,10 @@ WORKDIR ${VPN_DIR}
 RUN wget https://www.privateinternetaccess.com/openvpn/openvpn.zip && \
     unzip openvpn.zip
 
-ENV REGION='US West'
+COPY openvpn.sh openvpn.sh
 
-CMD openvpn "${REGION}"
+ENV REGION='US West'
+ENV USERNAME=''
+ENV PASSWORD=''
+
+CMD sh openvpn.sh
