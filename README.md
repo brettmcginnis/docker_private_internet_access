@@ -27,9 +27,6 @@ services:
     container_name: pia
     devices:
     - /dev/net/tun
-    dns:
-    - 8.8.8.8
-    - 8.8.4.4
     environment:
       PASSWORD: YOUR_PASSWORD
       REGION: YOUR_REGION
@@ -37,13 +34,25 @@ services:
     image: brettmcgin/private_internet_access
     ports:
     - <portsNeededByOtherService>
-    privileged: true
   busybox:
     container_name: busybox
     image: busybox
     network_mode: service:pia
     command: ifconfig | grep inet
 version: '2'
+```
+
+### Optional run flags
+```yml
+services:
+  pia:
+    dns:
+    # Google
+    - 8.8.8.8
+    - 8.8.4.4
+    # PIA Dns
+    - 209.222.18.222
+    - 209.222.18.218
 ```
 
 ## List Regions
