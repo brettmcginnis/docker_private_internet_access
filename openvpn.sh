@@ -8,4 +8,7 @@ set -eu
 echo "$USERNAME" > auth.conf
 echo "$PASSWORD" >> auth.conf
 
-openvpn --config "${REGION}.ovpn" --auth-user-pass auth.conf
+openvpn \
+    --config "${REGION}.ovpn" \
+    --auth-user-pass auth.conf \
+    --keepalive 10 60
