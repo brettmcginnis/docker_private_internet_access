@@ -8,7 +8,11 @@ set -eu
 echo "$USERNAME" > auth.conf
 echo "$PASSWORD" >> auth.conf
 
+# Remove Persistent Tunnel
+sed -i .bak 's/persist-tun//' "${REGION}.ovpn"
+
 openvpn \
     --config "${REGION}.ovpn" \
     --auth-user-pass auth.conf \
-    --keepalive 10 60
+    --keepalive 10 60 \
+    --mute-replay-warnings
