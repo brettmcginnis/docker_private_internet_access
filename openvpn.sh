@@ -9,7 +9,7 @@ echo "$USERNAME" > auth.conf
 echo "$PASSWORD" >> auth.conf
 
 # Remove Persistent Tunnel
-sed -i .bak 's/persist-tun//' "${REGION}.ovpn"
+sed -i 's/persist-tun//' "${REGION}.ovpn"
 
 openvpn \
     --config "${REGION}.ovpn" \
