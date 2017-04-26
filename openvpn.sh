@@ -10,6 +10,10 @@ echo "$PASSWORD" >> auth.conf
 
 chmod 600 auth.conf
 
+sed -i 's/resolv-retry.*/resolv-retry 10/' "${REGION}.ovpn"
+sed -i 's/persist-key.*//' "${REGION}.ovpn"
+sed -i 's/persist-tun.*//' "${REGION}.ovpn"
+
 openvpn \
     --config "${REGION}.ovpn" \
     --auth-user-pass auth.conf \
