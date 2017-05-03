@@ -16,7 +16,13 @@ RUN mkdir -p ${VPN_DIR} && \
 
 WORKDIR ${VPN_DIR}
 
-RUN wget https://www.privateinternetaccess.com/openvpn/openvpn.zip && \
+#https://www.privateinternetaccess.com/openvpn/openvpn.zip
+#https://www.privateinternetaccess.com/openvpn/openvpn-ip.zip
+#https://www.privateinternetaccess.com/openvpn/openvpn-ip-lport.zip
+#https://www.privateinternetaccess.com/openvpn/openvpn-tcp.zip
+#https://www.privateinternetaccess.com/openvpn/openvpn-ip-tcp.zip
+
+RUN wget https://www.privateinternetaccess.com/openvpn/openvpn-ip.zip && \
     unzip openvpn.zip
 
 COPY openvpn.sh openvpn.sh
